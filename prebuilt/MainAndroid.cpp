@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2021 Laurent Gomila (laurent@sfml-dev.org)
+// Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -46,9 +46,6 @@
 #include <android/window.h>
 #include <android/native_activity.h>
 #include <cstring>
-
-#define SF_GLAD_EGL_IMPLEMENTATION
-#include <glad/egl.h>
 
 
 extern int main(int argc, char *argv[]);
@@ -102,7 +99,6 @@ static void initializeMain(ActivityStates* states)
      * input queue.
      */
     ALooper_acquire(states->looper);
-    ALooper_wake(states->looper);
 
     // Get the default configuration
     states->config = AConfiguration_new();
@@ -179,7 +175,7 @@ void goToFullscreenMode(ANativeActivity* activity)
     // API Level 14
     if (apiLevel >= 14)
     {
-        jfieldID FieldSYSTEM_UI_FLAG_LOW_PROFILE = lJNIEnv->GetStaticFieldID(classView, "SYSTEM_UI_FLAG_HIDE_NAVIGATION", "I");
+        jfieldID FieldSYSTEM_UI_FLAG_LOW_PROFILE = lJNIEnv->GetStaticFieldID(classView, "SYSTEM_UI_FLAG_LOW_PROFILE", "I");
         jint SYSTEM_UI_FLAG_LOW_PROFILE = lJNIEnv->GetStaticIntField(classView, FieldSYSTEM_UI_FLAG_LOW_PROFILE);
         flags |= SYSTEM_UI_FLAG_LOW_PROFILE;
     }
@@ -493,7 +489,6 @@ JNIEXPORT void ANativeActivity_onCreate(ANativeActivity* activity, void* savedSt
     for (unsigned int i = 0; i < sf::Mouse::ButtonCount; i++)
         states->isButtonPressed[i] = false;
 
-    gladLoaderLoadEGL(EGL_DEFAULT_DISPLAY);
     states->display = eglGetDisplay(EGL_DEFAULT_DISPLAY);
 
     if (savedState != NULL)
