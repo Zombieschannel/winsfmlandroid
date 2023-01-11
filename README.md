@@ -124,7 +124,7 @@ The end result should look like this:
 ![Img](/images/img7.png)
  
 Now inside the "libs" folder add the following:
-if you plan to compile for ARM then add a folder called "arm", if you plan to compile for ARM64 then add a folder called "arm64-v8a". I will add both folders.
+if you plan to compile for ARM then add a folder called "armeabi-v7a", if you plan to compile for ARM64 then add a folder called "arm64-v8a". I will add both folders.
 
 ![Img](/images/img8.png)
  
@@ -132,14 +132,14 @@ Now go back to the C:\Microsoft\AndroidNDK64\android-ndk-r16b\sources\third_part
 
 ![Img](/images/img9.png)
  
-For the folder armeabi-v7a copy all of the ".so" files to the "libs/arm/" folder back in your Visual Studio project.
+For the folder armeabi-v7a copy all of the ".so" files to the "libs/armeabi-v7a/" folder back in your Visual Studio project.
 
-Also, go to C:\Microsoft\AndroidNDK64\android-ndk-r16b\sources\third_party\sfml-2.5.1\extlibs\lib and from the folder armeabi-v7a copy the libopenal.so back to the "libs/arm/" folder in your Visual Studio project. 
+Also, go to C:\Microsoft\AndroidNDK64\android-ndk-r16b\sources\third_party\sfml-2.5.1\extlibs\lib and from the folder armeabi-v7a copy the libopenal.so back to the "libs/armeabi-v7a/" folder in your Visual Studio project. 
 
 For the folder arm64-v8a copy all of the ".so" files to the "libs/arm64-v8a/" folder back in your Visual Studio project.
 
 Also, go to C:\Microsoft\AndroidNDK64\android-ndk-r16b\sources\third_party\sfml-2.5.1\extlibs\lib and from the folder arm64-v8a copy the libopenal.so back to the "libs/arm64-v8a/" folder in your Visual Studio project.
-In both "libs/arm" and "libs/arm64-v8a" you should now see this:
+In both "libs/armeabi-v7a" and "libs/arm64-v8a" you should now see this:
 
 ![Img](/images/img10.png)
  
