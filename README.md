@@ -43,9 +43,9 @@ The end directory should look like this:
 ![Img](/images/img5.png)
  
 *The next part of the tutorial is for building SFML for Android.
-You'll need to download Ninja, CMake, and SFML source code. Here are the links:
+You'll need to download Ninja, CMake, and SFML source code. Here are the links:*
 
-Ninja: https://github.com/ninja-build/ninja/releases
+*Ninja: https://github.com/ninja-build/ninja/releases
 CMake: https://cmake.org/download/
 SFML: https://www.sfml-dev.org/download/sfml/2.5.1/
 After unzipping, you’ll need to add both CMake and Ninja to your path.*
@@ -64,43 +64,43 @@ After that, create 2 folders inside the SFML source code directory for ARM and A
  
 *We’ll now run the main command
 `cmake -DCMAKE_SYSTEM_NAME=Android -DCMAKE_ANDROID_NDK=XYZXYZXYZ -DCMAKE_ANDROID_ARCH_ABI=armeabi-v7a -DCMAKE_ANDROID_STL_TYPE=c++_static -DCMAKE_BUILD_TYPE=Debug -G Ninja ..`
-Replace the XYZXYZXYZ with the path to your AndroidNDK64 by Visual Studio. In my case that is: C:\Microsoft\AndroidNDK64\android-ndk-r16b 
+Replace the XYZXYZXYZ with the path to your AndroidNDK64 by Visual Studio. In my case that is: C:\Microsoft\AndroidNDK64\android-ndk-r16b*
 
-Also remember to change all of the \ to / otherwise you'll get an error.
+*Also remember to change all of the \ to / otherwise you'll get an error.
 Then pray.
-If all goes well, you should get a bunch of text and something like this at the end:
+If all goes well, you should get a bunch of text and something like this at the end:*
 ```
 -- Configuring done
 -- Generating done
 -- Build files have been written to: C:/Users/cutel/Downloads/SFML-2.5.1-sources/SFML-2.5.1/android
 ```
 
-If something goes wrong, always make sure that you delete everything from the folder before running the command again.
+*If something goes wrong, always make sure that you delete everything from the folder before running the command again.
 Then type the following:
 `cmake --build . --target install`
 If all goes well, you’ll get a bunch of text which all has “–Installing:” in it.
-The ARM Debug mode is done.
+The ARM Debug mode is done.*
 
-To switch to ARM Release mode type: `cmake -DCMAKE_BUILD_TYPE=Release .`
+*To switch to ARM Release mode type: `cmake -DCMAKE_BUILD_TYPE=Release .`
 Then run the `cmake --build . --target install` command again.
-The ARM Release mode is done.
+The ARM Release mode is done.*
 
-Now “cd” to the second folder you created (in my case that is android64). Here we’ll do the same thing but for ARM64. So that would be “cd ..” and “cd android64”.
+*Now “cd” to the second folder you created (in my case that is android64). Here we’ll do the same thing but for ARM64. So that would be “cd ..” and “cd android64”.
 Then run this command again:
 `cmake -DCMAKE_SYSTEM_NAME=Android -DCMAKE_ANDROID_NDK=XYZXYZXYZ -DCMAKE_ANDROID_ARCH_ABI=arm64-v8a -DCMAKE_ANDROID_STL_TYPE=c++_static -DCMAKE_BUILD_TYPE=Debug -G Ninja ..`
 Note that the “-DCMAKE_ANDROID_ARCH_ABI=armeabi-v7a” has been replaced by
-“-DCMAKE_ANDROID_ARCH_ABI=arm64-v8a”.
+“-DCMAKE_ANDROID_ARCH_ABI=arm64-v8a”.*
 
-This time you’ll get an error saying: Missing item in FREETYPE_LIBRARY
-For unknown reasons, if you go to the extlibs/libs-android/ folder in the SFML source code you downloaded, you’ll see 4 folders, none of which is called arm64-v8a.
+*This time you’ll get an error saying: Missing item in FREETYPE_LIBRARY
+For unknown reasons, if you go to the extlibs/libs-android/ folder in the SFML source code you downloaded, you’ll see 4 folders, none of which is called arm64-v8a.*
 
-I have no idea why is it not there however you can download the contents from my GitHub again (from here).
-Under FilesForBuildingYourself, there should be a arm64-v8a folder that you need to download and add to extlibs/libs-android/ folder.
+*I have no idea why is it not there however you can download the contents from my GitHub again (from here).
+Under FilesForBuildingYourself, there should be a arm64-v8a folder that you need to download and add to extlibs/libs-android/ folder.*
 
-After you’ve done that make sure that you deleted everything from the second folder (in my case android64), and run the command again.
-This time everything should work and you can run the same commands that were used for ARM. 
+*After you’ve done that make sure that you deleted everything from the second folder (in my case android64), and run the command again.
+This time everything should work and you can run the same commands that were used for ARM.*
 
-`cmake --build . --target install`
+*`cmake --build . --target install`
 then: `cmake -DCMAKE_BUILD_TYPE=Release .`
 and then again: `cmake --build . --target install`*
 
